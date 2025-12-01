@@ -4,8 +4,8 @@ export default function EmbedPage() {
 			<p>embeds have been disabled for now</p>
 			<p className="text-sm text-zinc-500">
 				enjoy live telemetry and more on{" "}
-				<a className="text-blue-500" href="https://f1-dash.com" target="_blank">
-					f1-dash.com
+				<a className="text-blue-500" href="https://devnm23.github.io" target="_blank">
+					devnm23.github.io
 				</a>{" "}
 				directly
 			</p>

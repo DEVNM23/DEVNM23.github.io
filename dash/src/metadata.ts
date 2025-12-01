@@ -4,7 +4,7 @@ const title = "f1-dash | Formula 1 live timing";
 const description =
 	"Experience live telemetry and timing data from Formula 1 races. Get insights into leaderboards, tire choices, gaps, lap times, sector times, team radios, and more.";
 
-const url = "https://f1-dash.com";
+const url = process.env.NEXT_PUBLIC_LIVE_URL ?? "https://devnm23.github.io";
 
 export const metadata: Metadata = {
 	generator: "Next.js",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 		images: [
 			{
 				alt: "Realtime Formula 1 Dashboard",
-				url: `${url}/og-image.png`,
+				url: `${url}/opengraph-image.png`,
 				width: 1200,
 				height: 630,
 			},
