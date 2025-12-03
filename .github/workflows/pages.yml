@@ -43,7 +43,6 @@ jobs:
           export API_URL=${API_URL:-http://localhost:4001}
           export NEXT_PUBLIC_LIVE_URL=${NEXT_PUBLIC_LIVE_URL:-https://devnm23.github.io}
           NEXT_BUILD_OUTPUT=export yarn build
-          npx next export
 
       - name: Remove CNAME if present
         run: |
