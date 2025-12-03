@@ -35,13 +35,13 @@ jobs:
           yarn install --immutable --check-cache || yarn install
 
       - name: Build and export static site
-        env:
-          API_URL: ${{ secrets.API_URL }}
-          NEXT_PUBLIC_LIVE_URL: ${{ secrets.NEXT_PUBLIC_LIVE_URL }}
         working-directory: dash
         run: |
-          export API_URL=${API_URL:-http://localhost:4001}
-          export NEXT_PUBLIC_LIVE_URL=${NEXT_PUBLIC_LIVE_URL:-https://devnm23.github.io}
+          # Use live f1-dash API
+          export API_URL="https://api.f1-dash.com"
+          export NEXT_PUBLIC_LIVE_URL="https://devnm23.github.io"
+          echo "Building with API_URL=$API_URL"
+          echo "Building with NEXT_PUBLIC_LIVE_URL=$NEXT_PUBLIC_LIVE_URL"
           NEXT_BUILD_OUTPUT=export yarn build
 
       - name: Remove CNAME if present
