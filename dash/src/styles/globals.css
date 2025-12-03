@@ -1,39 +1,64 @@
 @import "tailwindcss";
 
-@theme inline {
+/* Theme variables */
+:root {
 	--font-sans: var(--font-geist-sans);
 	--font-mono: var(--font-geist-mono);
-}
-
-@theme {
 	--breakpoint-3xl: 1800px;
 
-	--color-popover: rgba(37, 37, 37, 0.9);
-	--color-pane: oklch(18% 0.005 285.82);
+	--color-bg-1: #0b1020; /* deep blue/near black */
+	--color-bg-2: #071026; /* subtle gradient */
+	--color-accent: #46b5ff; /* accent blue */
+	--color-muted: #9ca3af; /* muted text */
 }
 
+/* Global base improvements */
+@layer base {
+	html, body {
+		height: 100%;
+		background: linear-gradient(180deg, var(--color-bg-1) 0%, var(--color-bg-2) 60%);
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		color: #e6eef7;
+	}
+
+	body {
+		line-height: 1.5;
+	}
+
+	a { color: var(--color-accent); }
+	a:hover { text-decoration: underline; }
+
+	/* nicer container breakpoint */
+	.site-container { max-width: 1200px; }
+}
+
+/* Utilities */
 @layer utilities {
-	.no-scrollbar::-webkit-scrollbar {
-		display: none;
+	.no-scrollbar::-webkit-scrollbar { display: none; }
+	.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+	.btn {
+		@apply inline-flex items-center gap-2 rounded-md px-3 py-1.5 bg-blue-500 text-white text-sm font-medium shadow-sm;
 	}
 
-	.no-scrollbar {
-		-ms-overflow-style: none;
-		scrollbar-width: none;
+	.btn-ghost {
+		@apply inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium bg-transparent border border-zinc-700 text-white;
 	}
+
+	.card {
+		@apply bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 rounded-lg p-4 shadow-md;
+	}
+
+	.muted { color: var(--color-muted); }
 }
 
-.pulse-loading-spinner {
-	animation: pulse-loading 1.2s cubic-bezier(0.52, 0.6, 0.25, 0.99) infinite;
+/* Loading pulse */
+.pulse-loading-spinner { animation: pulse-loading 1.2s cubic-bezier(0.52, 0.6, 0.25, 0.99) infinite; }
+@keyframes pulse-loading { 0% { r: 0; opacity: 1; } 100% { r: 11px; opacity: 0; } }
+
+/* Small responsive tweaks */
+@media (min-width: 1024px) {
+	.site-container { padding-left: 1.5rem; padding-right: 1.5rem; }
 }
 
-@keyframes pulse-loading {
-	0% {
-		r: 0;
-		opacity: 1;
-	}
-	100% {
-		r: 11px;
-		opacity: 0;
-	}
-}
