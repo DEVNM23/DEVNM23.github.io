@@ -37,9 +37,9 @@ jobs:
       - name: Build and export static site
         working-directory: dash
         run: |
-          # Use live f1-dash API for both backend and frontend SSE
+          # Use live f1-dash API endpoints (frontend SSE should connect to rt-api)
           export API_URL="https://api.f1-dash.com"
-          export NEXT_PUBLIC_LIVE_URL="https://api.f1-dash.com"
+          export NEXT_PUBLIC_LIVE_URL="https://rt-api.f1-dash.com"
           echo "Building with API_URL=$API_URL"
           echo "Building with NEXT_PUBLIC_LIVE_URL=$NEXT_PUBLIC_LIVE_URL"
           NEXT_BUILD_OUTPUT=export yarn build
